@@ -41,6 +41,8 @@ export const prepareProducts = (products: Product[]) => {
     return {
       ...product,
       price,
+      colors: colors.map(({ name, color }) => ({ name, color })),
+      variants: product.variants,
     };
   });
 };

@@ -31,7 +31,7 @@ export const CardProduct = ({
     (variant) => variant.color === activeColor.color
   );
 
-  const stock = selectedVariant.stock || 0;
+  const stock = selectedVariant?.stock || 0;
 
   return (
     <div className="flex flex-col gap-6 relative">
