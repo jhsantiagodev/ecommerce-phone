@@ -4,6 +4,7 @@ import { CardProduct } from "../components/products/CardProduct";
 import { ContainerFilter } from "../components/products/ContainerFilter";
 import { useFilteredProducts } from "../hooks";
 import { useState } from "react";
+import { PaginationComponent } from "../components/shared/PaginationComponent";
 
 export const CellPhonesPage = () => {
   const [page, setPage] = useState(1);
@@ -55,6 +56,11 @@ export const CellPhonesPage = () => {
             </div>
 
             {/*Paginacion */}
+            <PaginationComponent
+              totalItems={totalProducts}
+              page={page}
+              setPage={setPage}
+            />
           </div>
         )}
       </div>

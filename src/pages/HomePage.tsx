@@ -1,12 +1,16 @@
 import { Brands } from "../components/home/Brands";
 import { FeatureGrid } from "../components/home/FeatureGrid";
 import { ProductGrid } from "../components/home/ProductGrid";
-import { recentCelulares, popularCelulares } from "../data/initialData";
+import { ProductGridSkeleton } from "../components/skeletons/ProductGridSkeleton";
+//import { recentCelulares, popularCelulares } from "../data/initialData";
 import { prepareProducts } from "../helpers";
+import { useHomeProducts } from "../hooks";
 
 export const HomePage = () => {
-  const prepraredRecentProducts = prepareProducts(recentCelulares);
-  const prepraredPopularProducts = prepareProducts(popularCelulares);
+  const { recentProducts, popularProducts, isLoading } = useHomeProducts();
+
+  const prepraredRecentProducts = prepareProducts(recentProducts);
+  const prepraredPopularProducts = prepareProducts(popularProducts);
 
   console.log(prepraredRecentProducts);
 
@@ -14,15 +18,23 @@ export const HomePage = () => {
     <div>
       <FeatureGrid />
 
-      <ProductGrid
-        title="Nuevos Productos"
-        products={prepraredRecentProducts}
-      />
+      {isLoading ? (
+        <ProductGridSkeleton numberOfProducts={4} />
+      ) : (
+        <ProductGrid
+          title="Nuevos Productos"
+          products={prepraredRecentProducts}
+        />
+      )}
 
-      <ProductGrid
-        title="Productos Destacados"
-        products={prepraredPopularProducts}
-      />
+      {isLoading ? (
+        <ProductGridSkeleton numberOfProducts={4} />
+      ) : (
+        <ProductGrid
+          title="Productos Destacados"
+          products={prepraredPopularProducts}
+        />
+      )}
 
       <Brands />
     </div>
