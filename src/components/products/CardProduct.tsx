@@ -3,6 +3,7 @@ import { FiPlus } from "react-icons/fi";
 import { useState } from "react";
 import { VariantProduct } from "../../interface";
 import { formatPrice } from "../../helpers";
+import { Tag } from "../shared/Tag";
 
 interface Props {
   img: string;
@@ -73,7 +74,7 @@ export const CardProduct = ({
       </div>
 
       <div className="absolute top-2 left-2">
-        {stock === 0 && <span>Agotado</span>}
+        {stock === 0 && <Tag contentTag="agotado" />}
       </div>
     </div>
   );

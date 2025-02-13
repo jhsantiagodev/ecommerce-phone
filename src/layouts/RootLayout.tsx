@@ -5,7 +5,7 @@ import { Banner } from "../components/home/Banner";
 import { Newsletter } from "../components/home/Newsletter";
 
 export const RootLayout = () => {
-  const { pathname } = useLocation();
+  const { pathname } = useLocation(); //Saber en que ruta estoy, poder renderizar el Banner y la Newsletter
 
   return (
     <div className="h-screen flex flex-col font-montserrat">

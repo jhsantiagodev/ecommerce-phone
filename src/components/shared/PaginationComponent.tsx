@@ -21,7 +21,7 @@ export const PaginationComponent = ({ totalItems, page, setPage }: Props) => {
   const endItem = Math.min(page * itemsPerPage, totalItems); //no sobrepase
 
   return (
-    <div className=" flex justify-between items-center">
+    <div className="flex justify-between items-center">
       <p className="text-xs font-medium">
         Mostrandro{" "}
         <span className="font-bold">

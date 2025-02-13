@@ -1,5 +1,7 @@
 import { supabase } from "../supabase/client";
 
+/*Consultas a la DB de supabase, se Utilizan en los customHooks */
+
 export const getProducts = async () => {
   const { data: products, error } = await supabase
     .from("products")
@@ -81,4 +83,19 @@ export const getRandomProducts = async () => {
   const randomProducts = products.sort(() => 0.5 - Math.random()).slice(0, 4);
 
   return randomProducts;
+};
+
+export const getProductBySlug = async (slug: string) => {
+  const { data, error } = await supabase
+    .from("products")
+    .select("*, variants(*)")
+    .eq("slug", slug) //Nombre de la tabla, slug que se le pasa
+    .single(); //selecciona solamente un resultado de ese array
+
+  if (error) {
+    console.log(error.message);
+    throw new Error(error.message);
+  }
+
+  return data;
 };

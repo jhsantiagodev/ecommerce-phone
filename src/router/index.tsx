@@ -4,6 +4,7 @@ import { ErrorPages } from "../pages/ErrorPages";
 import { HomePage } from "../pages/HomePage";
 import { AboutPage } from "../pages/AboutPage";
 import { CellPhonesPage } from "../pages/CellPhonesPage";
+import { CellPhonePage } from "../pages/CellPhonePage";
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ export const router = createBrowserRouter([
       {
         path: "celulares",
         element: <CellPhonesPage />,
+      },
+      {
+        path: "celulares/:slug",
+        element: <CellPhonePage />,
       },
       {
         path: "nosotros",

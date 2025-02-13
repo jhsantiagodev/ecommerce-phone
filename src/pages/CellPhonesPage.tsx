@@ -35,7 +35,7 @@ export const CellPhonesPage = () => {
         />
 
         {isLoading ? (
-          <div className=" col-span-2 flex items-center justify-center h-[500px]">
+          <div className="col-span-2 flex items-center justify-center h-[500px]">
             <p className="text-2xl">Cargando...</p>
           </div>
         ) : (
