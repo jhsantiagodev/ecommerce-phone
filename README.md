@@ -22,6 +22,9 @@
 - Tailwind/Typography
   npm i -D @tailwindcss/typography
 
+- Zustand
+  npm i zustand
+
 ### Links
 
 https://drive.google.com/drive/folders/11R8rcg6Q4riwGgvdXW_SDC5u3NMA-dAM

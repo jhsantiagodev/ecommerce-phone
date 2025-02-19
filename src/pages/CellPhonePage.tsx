@@ -11,6 +11,7 @@ import { useEffect, useMemo, useState } from "react";
 import { VariantProduct } from "../interface";
 import { Tag } from "../components/shared/Tag";
 import { Loader } from "../components/shared/Loader";
+import { useCounterStore } from "../store/counter.store";
 
 //La llave es para ir cambiando el color que se le vaya pasando
 interface Acc {
@@ -31,6 +32,11 @@ export const CellPhonePage = () => {
   const [selectedVariant, setSelectedVariant] = useState<VariantProduct | null>(
     null
   );
+
+  //contador
+  const count = useCounterStore((state) => state.count);
+  const increment = useCounterStore((state) => state.increment);
+  const decrement = useCounterStore((state) => state.decrement);
 
   //Agrupamos las variantes por color
   const colors = useMemo(() => {
@@ -188,12 +194,13 @@ export const CellPhonePage = () => {
                 <p className="text-sm font-medium">Cantidad:</p>
 
                 <div className="flex gap-8 px-5 py-3 border border-slate-200 w-fit rounded-full">
-                  <button>
+                  <button onClick={decrement} disabled={count === 1}>
                     <LuMinus size={15} />
-                    <span className="text-slate-500 text-sm">1</span>
                   </button>
 
-                  <button>
+                  <span className="text-slate-500 text-sm">{count}</span>
+
+                  <button onClick={increment}>
                     <LuPlus size={15} />
                   </button>
                 </div>

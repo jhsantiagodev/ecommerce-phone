@@ -99,3 +99,17 @@ export const getProductBySlug = async (slug: string) => {
 
   return data;
 };
+
+export const searchProducts = async (searchTerm: string) => {
+  const { data, error } = await supabase
+    .from("products")
+    .select("*, variants(*)")
+    .ilike("name", `%${searchTerm}%`); //Buscar Productos cuyo nombre contenga el termino de Busqueda
+
+  if (error) {
+    console.log(error.message);
+    throw new Error(error.message);
+  }
+
+  return data;
+};
